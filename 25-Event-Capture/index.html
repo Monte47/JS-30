@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Understanding JavaScript's Capture</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body class="bod">
 
@@ -15,6 +16,24 @@
 
 <button></button>
 <script>
+
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+
+  function logText(e) {
+    e.stopPropagation();
+    console.log(this.classList.value);
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    // capture: true,
+    // once: true
+  }));
+
+  button.addEventListener('click', logText, {
+    once: true
+  });
+
 
 </script>
 </body>
